@@ -54,32 +54,32 @@ var update = function(){
   }
 
   else if (Nakama.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
-    if(Nakama.player.position.x <= Nakama.configs.GAME_WIDTH - Nakama.player.width) {
+    if(Nakama.player.position.x < Nakama.configs.GAME_WIDTH - Nakama.player.width) {
         Nakama.player.position.x += 10;
     }
   }
 
   if (Nakama.keyboard.isDown(Phaser.Keyboard.UP)){
-    if(Nakama.player.position.y >= 0) {
+    if(Nakama.player.position.y > 0) {
         Nakama.player.position.y -= 10;
     }
   }
 
   else if (Nakama.keyboard.isDown(Phaser.Keyboard.DOWN)) {
-    if(Nakama.player.position.y <= Nakama.configs.GAME_HEIGHT - Nakama.player.height) {
+    if(Nakama.player.position.y < Nakama.configs.GAME_HEIGHT - Nakama.player.height) {
         Nakama.player.position.y += 10;
     }
   }
 
 
   if (Nakama.keyboard.isDown(Phaser.Keyboard.A)) {
-    if(Nakama.partner.position.x >= 0) {
+    if(Nakama.partner.position.x > 0) {
           Nakama.partner.position.x -= 10;
     }
   }
 
   else if (Nakama.keyboard.isDown(Phaser.Keyboard.D)) {
-    if(Nakama.partner.position.x <= Nakama.configs.GAME_WIDTH - Nakama.partner.width) {
+    if(Nakama.partner.position.x < Nakama.configs.GAME_WIDTH - Nakama.partner.width) {
       Nakama.partner.position.x += 10;
     }
   }
@@ -91,7 +91,7 @@ var update = function(){
   }
 
   else if (Nakama.keyboard.isDown(Phaser.Keyboard.S)) {
-    if(Nakama.partner.position.y <= Nakama.configs.GAME_HEIGHT - Nakama.partner.height) {
+    if(Nakama.partner.position.y < Nakama.configs.GAME_HEIGHT - Nakama.partner.height) {
         Nakama.partner.position.y += 10;
     }
   }
