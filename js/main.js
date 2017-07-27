@@ -39,63 +39,30 @@ var create = function(){
   Nakama.keyboard = Nakama.game.input.keyboard;
 
   Nakama.background = Nakama.game.add.sprite(0, -960, 'background');
-  Nakama.player = Nakama.game.add.sprite(200, 200, 'assets', 'Spaceship1-Player.png');
-  Nakama.partner = Nakama.game.add.sprite(400, 200, 'assets', 'Spaceship1-Partner.png');
+  Nakama.players = [];
+  Nakama.players.push(
+    new ShipController(200, 400, 'Spaceship1-Player.png', {
+    up: Phaser.Keyboard.UP,
+    down: Phaser.Keyboard.DOWN,
+    left: Phaser.Keyboard.LEFT,
+    right: Phaser.Keyboard.RIGHT,
+    fire : Phaser.Keyboard.SPACEBAR,
+  }));
+  Nakama.players.push(
+    new ShipController(400, 400, 'Spaceship1-Partner.png', {
+    up: Phaser.Keyboard.W,
+    down: Phaser.Keyboard.S,
+    left: Phaser.Keyboard.A,
+    right: Phaser.Keyboard.D,
+    fire : Phaser.Keyboard.F,
+  }));
 }
 
 // update game state each frame
 var update = function(){
-  console.log(Nakama.player.position.x);
-  console.log(Nakama.partner.position.x);
-  if (Nakama.keyboard.isDown(Phaser.Keyboard.LEFT) ){
-    if(Nakama.player.position.x > 0) {
-      Nakama.player.position.x -= 10;
-    }
-  }
-
-  else if (Nakama.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
-    if(Nakama.player.position.x < Nakama.configs.GAME_WIDTH - Nakama.player.width) {
-        Nakama.player.position.x += 10;
-    }
-  }
-
-  if (Nakama.keyboard.isDown(Phaser.Keyboard.UP)){
-    if(Nakama.player.position.y > 0) {
-        Nakama.player.position.y -= 10;
-    }
-  }
-
-  else if (Nakama.keyboard.isDown(Phaser.Keyboard.DOWN)) {
-    if(Nakama.player.position.y < Nakama.configs.GAME_HEIGHT - Nakama.player.height) {
-        Nakama.player.position.y += 10;
-    }
-  }
-
-
-  if (Nakama.keyboard.isDown(Phaser.Keyboard.A)) {
-    if(Nakama.partner.position.x > 0) {
-          Nakama.partner.position.x -= 10;
-    }
-  }
-
-  else if (Nakama.keyboard.isDown(Phaser.Keyboard.D)) {
-    if(Nakama.partner.position.x < Nakama.configs.GAME_WIDTH - Nakama.partner.width) {
-      Nakama.partner.position.x += 10;
-    }
-  }
-
-  if (Nakama.keyboard.isDown(Phaser.Keyboard.W)){
-    if(Nakama.partner.position.y >= 0) {
-      Nakama.partner.position.y -= 10;
-    }
-  }
-
-  else if (Nakama.keyboard.isDown(Phaser.Keyboard.S)) {
-    if(Nakama.partner.position.y < Nakama.configs.GAME_HEIGHT - Nakama.partner.height) {
-        Nakama.partner.position.y += 10;
-    }
-  }
-
+  // for(var player of Nakama.players) {
+  //   player.update();
+  // }
   Nakama.background.position.y += 5;
   if (Nakama.background.position.y > 0) {
     Nakama.background.position.y -= 960;
