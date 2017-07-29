@@ -8,10 +8,19 @@ class ShipController {
 
     this.configs = configs;
     this.configs.SHIP_SPEED = 600;
+
+    this.bullets = [];
+    this.bullets.TIME = 5;
+    this.bullets.wait = this.bullets.TIME;
+    // bullet.push(
+    //   new BulletController(x, y, 'BulletType1.png');
+    // )
     this.sprite.update = this.update.bind(this);
   }
 
   update() {
+    // console.log(this.sprite.position.x);
+    // console.log(this.sprite.position.y);
     if (Nakama.keyboard.isDown(this.configs.left) ){
       this.sprite.body.velocity.x = -this.configs.SHIP_SPEED;
     }
@@ -25,14 +34,27 @@ class ShipController {
     }
 
     if (Nakama.keyboard.isDown(this.configs.up)){
-      if(this.sprite.body.velocity.y = -this.configs.SHIP_SPEED);
+      (this.sprite.body.velocity.y = -this.configs.SHIP_SPEED);
     }
 
     else if (Nakama.keyboard.isDown(this.configs.down)) {
-      if(this.sprite.body.velocity.y = this.configs.SHIP_SPEED);
+      (this.sprite.body.velocity.y = this.configs.SHIP_SPEED);
     }
     else{
       this.sprite.body.velocity.y = 0;
+    }
+    if(this.bullets.wait < this.bullets.TIME) {
+      this.bullets.wait++;
+    }
+    if(Nakama.keyboard.isDown(this.configs.fire) && this.bullets.wait == this.bullets.TIME){
+      // console.log((this.sprite.position.x);
+      this.bullets.push ( new BulletController(
+        this.sprite.position.x + this.sprite.width/4,
+        this.sprite.position.y- this.sprite.height/2,
+        'BulletType1.png'
+      ));
+      // console.log((this.sprite.position.x));
+      this.bullets.wait = 0;
     }
   }
 }
