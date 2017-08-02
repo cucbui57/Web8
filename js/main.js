@@ -1,7 +1,16 @@
 var Nakama = {};
 Nakama.configs = {
   GAME_WIDTH: 640,
-  GAME_HEIGHT: 960
+  GAME_HEIGHT: 960,
+  P1_START_POSITION : {
+    x: 200,
+    y:400
+  },
+  P2_START_POSITION : {
+    x:400,
+    y:400
+  }
+
 };
 
 window.onload = function(){
@@ -39,9 +48,14 @@ var create = function(){
   Nakama.keyboard = Nakama.game.input.keyboard;
 
   Nakama.background = Nakama.game.add.sprite(0, -960, 'background');
+
+  Nakama.bulletGroup = Nakama.game.add.physicsGroup();
+  Nakama.playerGroup = Nakama.game.add.physicsGroup();
+  Nakama.enemyGroup = Nakama.game.add.physicsGroup();
+
   Nakama.players = [];
   Nakama.players.push(
-    new ShipController(200, 400, 'Spaceship1-Player.png', {
+    new ShipType1Controller(200, 800, '-Player', {
     up: Phaser.Keyboard.UP,
     down: Phaser.Keyboard.DOWN,
     left: Phaser.Keyboard.LEFT,
@@ -49,13 +63,19 @@ var create = function(){
     fire : Phaser.Keyboard.SPACEBAR,
   }));
   Nakama.players.push(
-    new ShipController(400, 400, 'Spaceship1-Partner.png', {
+    new ShipType1Controller(400, 800, '-Partner', {
     up: Phaser.Keyboard.W,
     down: Phaser.Keyboard.S,
     left: Phaser.Keyboard.A,
     right: Phaser.Keyboard.D,
     fire : Phaser.Keyboard.F,
   }));
+  Nakama.enemies =[];
+  Nakama.enemies.push(
+    new EnemyController(320, 100, 'EnemyType1.png',{
+      health : 2
+    })
+  );
 }
 
 // update game state each frame
@@ -67,7 +87,17 @@ var update = function(){
   if (Nakama.background.position.y > 0) {
     Nakama.background.position.y -= 960;
   }
+  Nakama.game.physics.arcade.overlap(
+    Nakama.bulletGroup,
+    Nakama.enemyGroup,
+    onBulletHitEnemy // ham callback: duoc goi khi xay ra su kien nao do
+  );
 }
 
 // before camera render (mostly for debug)
 var render = function(){}
+
+var onBulletHitEnemy = function(bulletSprite, enemySpite) {
+  bulletSprite.kill();
+  enemySpite.damage(1); // damage: ham cua phaser = this.configs.health -1;
+}
