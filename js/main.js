@@ -63,7 +63,7 @@ var create = function(){
     fire : Phaser.Keyboard.SPACEBAR,
   }));
   Nakama.players.push(
-    new ShipType1Controller(400, 800, '-Partner', {
+    new ShipType2Controller(400, 800, '-Partner', {
     up: Phaser.Keyboard.W,
     down: Phaser.Keyboard.S,
     left: Phaser.Keyboard.A,
@@ -73,16 +73,13 @@ var create = function(){
   Nakama.enemies =[];
   Nakama.enemies.push(
     new EnemyController(320, 100, 'EnemyType1.png',{
-      health : 2
+      health : 5
     })
   );
 }
 
 // update game state each frame
 var update = function(){
-  // for(var player of Nakama.players) {
-  //   player.update();
-  // }
   Nakama.background.position.y += 5;
   if (Nakama.background.position.y > 0) {
     Nakama.background.position.y -= 960;
@@ -92,6 +89,7 @@ var update = function(){
     Nakama.enemyGroup,
     onBulletHitEnemy // ham callback: duoc goi khi xay ra su kien nao do
   );
+
 }
 
 // before camera render (mostly for debug)

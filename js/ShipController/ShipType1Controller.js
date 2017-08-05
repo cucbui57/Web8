@@ -7,8 +7,8 @@ class ShipType1Controller extends ShipController{
       // = "Spaceship1" +spriteSuffix+ ".png";
       configs
     );
-    this.configs.SHIP_SPEED = 600;
-    this.configs.COOLDOWN = 500;
+    this.configs.SHIP_SPEED = 1000;
+    this.configs.COOLDOWN = 100;
   }
     fire(){
       new BulletType1Controller(
