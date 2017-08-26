@@ -1,0 +1,55 @@
+p{
+  color: red;
+}
+
+h1{
+  background: blue;
+}
+
+/*class selector*/
+.bold-text{
+  font-weight: bold;
+}
+.underlined-text{
+  text-decoration: underline;
+}
+
+#top{
+  font-family: "Comic Sans MS"
+}
+
+/*attribute selector*/
+[href] {
+  color: yellow;
+}
+
+[href="#top"] {
+  font-size: 24px;
+}
+
+/*child selector*/
+ul li{
+  list-style: square;
+}
+
+/*direct child*/
+ul > li{
+  list-style: lower-latin;
+}
+
+li:last-child {
+  /*list-style: none;*/
+  font-size: 25px;
+}
+
+nav:hover {
+  text-shadow: 1px 1px rgba(0, 0, 0, 1);
+}
+
+a:active{ /*for a tag and button*/
+  color: brown;
+}
+
+input:focus {
+  border: 1px dashed red;
+}
