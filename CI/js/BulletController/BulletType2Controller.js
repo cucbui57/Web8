@@ -11,7 +11,6 @@ class BulletType2Controller extends BulletController {
 
   update(){
     this.posEnemy= Nakama.enemyGroup.getFirstAlive();
-
     if (this.posEnemy) {
       var targetAngle = Nakama.game.math.angleBetween(
         this.sprite.position.x,
@@ -19,7 +18,6 @@ class BulletType2Controller extends BulletController {
         this.posEnemy.position.x,
         this.posEnemy.position.y
       );
-
 
       if (this.sprite.rotation !== targetAngle + Math.PI/2) {
           var delta = targetAngle + Math.PI/2 - this.sprite.rotation;
@@ -38,6 +36,8 @@ class BulletType2Controller extends BulletController {
       }
           this.sprite.body.velocity.x = Math.cos(this.sprite.rotation-Math.PI/2) * this.configs.SPEED;
           this.sprite.body.velocity.y = Math.sin(this.sprite.rotation-Math.PI/2) * this.configs.SPEED;
+    } else{
+      this.sprite.body.velocity.y = -this.configs.SPEED;
     }
   }
 }
