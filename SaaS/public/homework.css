@@ -12,13 +12,16 @@ span:hover{
 }
 
 .menu_horizontal{
-  height: 37px;
+  /*height: 37px;*/
   width: 100%;
 }
 
 .menu_horizontal span{
-  display: inline-block;
-  padding-top: 7px;
+  /*display: inline-block;
+  padding-top: 7px;*/
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 100px;
   height: 30px;
 }
