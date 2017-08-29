@@ -13,6 +13,7 @@ span:hover{
 
 .menu_horizontal{
   /*height: 37px;*/
+  position: fixed;
   width: 100%;
 }
 
@@ -38,4 +39,9 @@ span:hover{
   width: 100px;
   height: 30px;
   border-top: 1px solid white;
+}
+
+a{
+  color: black;
+  text-decoration: none;
 }
