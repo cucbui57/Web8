@@ -1,17 +1,38 @@
 const express = require('express');
 const fileController = require('./fileController');
 const filename = 'test.txt';
+const handlebars = require('express-handlebars');
+const bodyParser = require('body-parser');
+const questionRouter = require('./questionRouter');
 
 let app = express();
 
-app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({extended:true}));
+app.engine('handlebars', handlebars({defaultLayout:'main'}));
+app.set('view engine', 'handlebars');
+
+// app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) =>{
-  res.sendFile(__dirname + '/public/homework.html');
+  // JSON
+
+  // let jsonObject = {
+  //   proa: 'propa',
+  //   prob: 'propb'
+  // }
+  //
+  // let jsonString = JSON.stringify(jsonObject);
+  // jsonObject = JSON.parse(jsonString);
+  // res.send(jsonObject);
+  // res.sendFile(__dirname + '/public/homework.html');
+  res.render('home');
 });
 
-app.get('/about',(req, res) => {
-  res.sendFile(__dirname + '/public/cv.html')
+app.use('/question', questionRouter);
+
+app.get('/about', (req, res) => {
+  let questionList = [{ id : 1, question : 'test'}, {id : 2, question : 'test1'}]
+  res.render('about',{ questionList });
 });
 
 app.get('/readFile', (req, res) => {
