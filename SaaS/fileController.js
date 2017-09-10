@@ -14,8 +14,20 @@ const readFile = (fileName, callback) => {
   });
 }
 
+const appendQuestion = (fileName, data) => {
+  fs.appendFileSync(fileName,data);
+}
+
+const getElements =() =>{
+  listQuestionString = `[${readFileSync('question.txt')}]`;
+  listQuestion = JSON.parse(listQuestionString);
+  return listQuestion;
+}
+
 module.exports = {
+  getElements,
   saveFile,
+  appendQuestion,
   readFileSync,
   readFile
 }

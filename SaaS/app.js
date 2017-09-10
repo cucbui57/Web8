@@ -8,3 +8,4 @@ fileController.readFile(filename, (data) => {
 });
 // console.log(`Day la ${result}`);
 console.log('Hello World');
+module.exports = Router;
