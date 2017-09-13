@@ -19,6 +19,7 @@ const appendQuestion = (fileName, data) => {
 }
 
 const getElements =() =>{
+  let listQuestion = [];
   listQuestionString = `[${readFileSync('question.txt')}]`;
   listQuestion = JSON.parse(listQuestionString);
   return listQuestion;

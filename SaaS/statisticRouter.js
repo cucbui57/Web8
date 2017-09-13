@@ -3,6 +3,8 @@ const Router = express.Router();
 const fileController = require('./fileController.js');
 Router.get('/', (req, res) =>{
   let listQuestion = fileController.getElements();
-  res.send(listQuestion);
+    res.render('statistic',{
+      listQuestion:listQuestion
+    });
 });
 module.exports = Router;
