@@ -1,4 +1,19 @@
 <title>Home</title>
+<style media="screen">
+  h1{
+    text-align: center;
+  }
+</style>
+
+<script>
+  $.ajax({
+    type: 'get',
+    url: '/api/question/'
+  }).done((data) =>{
+
+  });
+
+</script>
 
 <div class="row">
     <h1 class="home question" style="display: block">{{question}}</h1>
@@ -6,24 +21,13 @@
 
 <div class="row">
     <form class="" action="{{{link}}}" method="post">
-        <div class="col-sm-3"> </div>
-        <div class="col-sm-3 col-centered">
-            <button class="btn btn-lg btn-primary home yes" type="button" name="choice" style="visibility: {{visibility}}"> Sai / Không / Trái </button>
+        <div class="col-sm-4 col-xs-2"> </div>
+        <div class="col-sm-2 col-centered col-xs-4">
+            <button class="btn btn-lg btn-primary home yes" type="submit" name="choice" value="yes" > Sai / Không / Trái </button>
         </div>
-        <div class="col-sm-3 col-centered">
-            <button class="btn btn-lg btn-danger home no" type="button" name="choice"  style="visibility: {{visibility}}"> Đúng / Có / Phải </button>
+        <div class="col-sm-2 col-centered col-xs-4">
+            <button class="btn btn-lg btn-danger home no" type="submit" name="choice" value="no"> Đúng / Có / Phải </button>
         </div>
-        <div class="col-sm-3"> </div>
+        <div class="col-sm-4 col-xs-2"> </div>
     </form>
-</div>
-
-<div class="row" style="margin-top: 30px">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-2" style="text-align: right">
-        <button type="button" class="btn btn-default">Kết quả vote</button>
-    </div>
-    <div class="col-sm-2" style="text-align: left">
-        <button type="button" class="btn btn-default">Câu hỏi khác</button>
-    </div>
-    <div class="col-sm-4"></div>
 </div>

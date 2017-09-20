@@ -1,0 +1,23 @@
+body{
+  margin: 0;
+}
+
+.banner{
+  color: white;
+  background: blue;
+  padding: 20px 10px;
+}
+
+@media screen and (min-width: 600px) {
+  .banner{
+    background: yellow;
+    height: 100vh;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .banner{
+    background: red;
+    height: 100vh;
+  }
+}
